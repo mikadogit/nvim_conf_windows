@@ -1,0 +1,7 @@
+--target=x86_64-w64-mingw32
+-xc++
+-Wall 
+-Wformat 
+-Wextra
+-IC:\msys64\mingw64\include
+-IC:\msys64\mingw64\lib\gcc\x86_64-w64-mingw32\11.2.0\include-fixed

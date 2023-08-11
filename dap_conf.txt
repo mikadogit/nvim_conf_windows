@@ -1,0 +1,4 @@
+exec_name="Test_DUT_test.exe"
+windows_bin_path="C:/FOLDER/outils/Test_DUT/Debug_test/"
+wsl_bin_path="/mnt/c/FOLDER/outils/Test_DUT/Debug_test/"
+wsl_gdb_path="/mnt/c/msys64/mingw64/bin/"
