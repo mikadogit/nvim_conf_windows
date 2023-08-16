@@ -15,6 +15,7 @@ dap.configurations.cpp = {
     request = 'launch',
     MIMode = 'gdb',
     MIDebuggerPath = "C:\\msys64\\mingw64\\bin\\gdb.exe",
+    MIDebuggerArgs = "-x ${workspaceFolder}/.gdbinit",
     stopAtEntry = true,
     externalConsole = true,
     runInTerminal = true,
