@@ -62,7 +62,20 @@ M.dap = {
     ["<leader>pp"] = {
       "<cmd> echo expand('%:p')<CR>",
       "Print current file path",
-    }
+    },
+    ["<leader>ll"] = {
+      "<cmd> TroubleToggle<CR>",
+      "List Warnings Errors ...",
+    },
+    ["<leader>ml"] = {
+      "<cmd>:!make 2>&1 | tee make_logs.txt <CR>",
+      "Make the .makefile saving errors and warnings into make_logs.txt",
+    },
+    ["<leader>mc"] = {
+      "<cmd>:! make clean & rm make_logs.txt <CR>",
+      "Make the .makefile saving errors and warnings into make_logs.txt",
+    },
+
 
     -- ["<leader>dr"] = {
    --   "<cmd> DapContinue <CR>",

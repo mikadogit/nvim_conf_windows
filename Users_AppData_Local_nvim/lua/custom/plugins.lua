@@ -73,5 +73,11 @@ dependencies = "mfussenegger/nvim-dap",
       require "custom.configs.aerial"
     end
   },
+
+  {
+   "folke/trouble.nvim",
+   event = "VeryLazy",
+   dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 }
 return plugins
