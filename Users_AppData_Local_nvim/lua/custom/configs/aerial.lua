@@ -90,7 +90,7 @@ require("aerial").setup({
   lazy_load = true,
 
   -- Disable aerial on files with this many lines
-  disable_max_lines = 10000,
+  disable_max_lines = 30000,
 
   -- Disable aerial on files this size or larger (in bytes)
   disable_max_size = 2000000, -- Default 2MB
