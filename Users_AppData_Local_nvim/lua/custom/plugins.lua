@@ -79,11 +79,5 @@ dependencies = "mfussenegger/nvim-dap",
    event = "VeryLazy",
    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-  {
-   "kwkarlwang/bufjump.nvim",
-    config = function()
-        require("bufjump").setup()
-    end
-  },
  }
 return plugins
