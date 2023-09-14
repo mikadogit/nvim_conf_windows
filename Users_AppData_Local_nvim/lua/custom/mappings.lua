@@ -83,8 +83,14 @@ M.dap = {
       "<cmd>:! make clean & rm make_logs.txt <CR>",
       "Make clear",
     },
-
-
+    ["<A-Right>"] = {
+      "<cmd>:lua require('bufjump').forward()<CR>",
+      "Jump forward",
+    },
+    ["<A-Left>"] = {
+      "<cmd>:lua require('bufjump').backward()<CR>",
+      "Jump forward",
+    },
     -- ["<leader>dr"] = {
    --   "<cmd> DapContinue <CR>",
    --   "Start or continue the debugger",
