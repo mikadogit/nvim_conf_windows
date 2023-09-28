@@ -83,6 +83,17 @@ M.dap = {
       "<cmd>:! make clean & rm make_logs.txt <CR>",
       "Make clear",
     },
+    ["<A-Right>"] =
+    {
+        "<cmd>BufferMoveNext<CR> ",
+        "Move tabs to the right side"
+    },
+    ["<A-Left>"] =
+    {
+        "<cmd>BufferMovePrevious<CR> ",
+        "Move tabs to the left side"
+    },
+
     -- ["<leader>dr"] = {
    --   "<cmd> DapContinue <CR>",
    --   "Start or continue the debugger",
