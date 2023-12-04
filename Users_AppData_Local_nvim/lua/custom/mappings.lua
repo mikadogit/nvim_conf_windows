@@ -83,6 +83,26 @@ M.dap = {
       "<cmd>:! make clean & rm make_logs.txt <CR>",
       "Make clear",
     },
+    ["<leader>fx"] = {
+      "<cmd> Telescope grep_string <CR>",
+      "Find word under cursor",
+    },
+    ["<leader>fr"] = {
+      "<cmd> Telescope resume <CR>",
+      "Resume last search",
+    },
+    ["fd"] = {
+      "<cmd> Telescope lsp_definitions <CR>",
+      "Find LSP Definition (telescope)",
+    },
+    ["fr"] = {
+      "<cmd> Telescope lsp_references <CR>",
+      "Find LSP References (telescope)",
+    },
+    ["fi"] = {
+      "<cmd> Telescope lsp_implementations <CR>",
+      "Find LSP Implementaions (telescope)",
+    },
     ["<A-Right>"] =
     {
         "<cmd>BufferMoveNext<CR> ",
