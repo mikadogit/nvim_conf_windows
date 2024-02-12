@@ -32,7 +32,7 @@ M.dap = {
       "Debugger : break condition",
     },
     ["<leader>dq"] = {
-        "<cmd> :lua require('dapui').close()<CR>",
+        "<cmd> :lua require('dapui').close()<CR>:DapTerminate <CR>",
         "Debugger : close IHM"
     },
     ["<leader>dc"] = {
