@@ -27,7 +27,7 @@ CXX = C:\\mingw64\\bin\g++.exe
 #The C++/C compilation flags : 
 CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 
 #The archive builder flages : 
-ARFLAGS = 
+ARFLAGS = rc
 
 #Bin name generation
 EXE =Experimentation.exe
