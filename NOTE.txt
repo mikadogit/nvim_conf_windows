@@ -6,4 +6,7 @@ installer ripgrep et xclip (cholately)
 installer python3-dev et env
 TsInstall c et cpp et python
 
+MasonInstallAll
+Lazy
+
 dap_conf.txt utile uniquement si GDB Server 

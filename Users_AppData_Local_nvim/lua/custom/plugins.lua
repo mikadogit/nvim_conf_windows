@@ -80,6 +80,8 @@ dependencies = "mfussenegger/nvim-dap",
    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
+  { "nvim-neotest/nvim-nio" },
+
   {
     'romgrk/barbar.nvim',
     event = "VeryLazy",
