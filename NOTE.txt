@@ -1,6 +1,6 @@
 CF : https://nvchad.com/docs/quickstart/install/
 
-git clone https://github.com/NvChad/starter %USERPROFILE%\AppData\Local\nvim && nvim (pas obligatoire, car si evolution via nvchad, il faut faire un diff lors de la copie des dossiers)
+git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim && nvim (pas obligatoire, car si evolution via nvchad, il faut faire un diff lors de la copie des dossiers) (VIA POWERSHELL)
 
 installer ripgrep et xclip (cholately)
 installer python3-dev et env
