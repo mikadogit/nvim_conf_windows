@@ -33,9 +33,9 @@ ARFLAGS = rc
 EXE =Experimentation.exe
 
 #Archive component : 
-AR = 
+AR = src\main.o src\test.o
 #Lib NAME : 
-LIBRARY = 
+LIBRARY = libexp.a
 
 #Build destination
 BUILDFOLDER =Debug_Experimentation
