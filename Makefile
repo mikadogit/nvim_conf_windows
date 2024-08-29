@@ -22,15 +22,15 @@ HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp .i
 # --------------- SPECIFICATION -------------------
 ########################################################
 # The C++/C program compiler :  
-CXX = C:\\msys64\\mingw64\\bin\g++.exe
+CXX = C:\\mingw64\\bin\g++.exe
 
 #The C++/C compilation flags : 
-CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0
+CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 
 #The archive builder flages : 
 ARFLAGS = 
 
 #Bin name generation
-EXE =Test_DUT_ARTIQ.exe
+EXE =Experimentation.exe
 
 #Archive component : 
 AR = 
@@ -38,26 +38,24 @@ AR =
 LIBRARY = 
 
 #Build destination
-BUILDFOLDER =Debug_ARTIQ
+BUILDFOLDER =Debug_Experimentation
 #FOLDERS sources LIST (automatically processing)
-#ex : SRCDIRS=. /home/Code/imgui /home/eclipse-workspace/Test/include/implot
 SRCDIRS =	src \
-			src/A \
-			src/B \
+			
 #FOLDERS headers LIST (automatically processing)
-#ex : IDIR=/usr/local/SDL2-2.0.9/include /home/Code/imgui /home/eclipse-workspace/Test/include/implot
-IDIR =	C:\\msys64/mingw64/include \
-		src \
-		
+IDIR =	src
+
+# IDIR =	C:\\mingw64\\include\\ \
+			# src
+			# C:\\mingw64\\x86_64-w64-mingw32\\include\\ \
+			# C:\\mingw64\\mingw32\\lib\\ \
 #ADD Libs  : 
 # ex : LIBS = -lGL -ldl `sdl2-config --libs`
-LIBS =	-lformw \
-		-lmenuw \
-		-lncurses \
+LIBS = 	
 
 #LD FLags :
-LDFLAGS =	-LC:\\msys64\\mingw64\\lib \
-
+LDFLAGS = 
+# LDFLAGS =	-LC:\\mingw64\\lib 
 #/!\ : use this variables to NOT include specific files : 
 # ex : EXCLUDEFILES=/root/Code/imgui/backends/imgui_impl_dx9.cpp /root/Code/imgui/backends/imgui_impl_wgpu.cpp (file with path!!)          
 EXCLUDEFILES=/
@@ -136,28 +134,28 @@ endif
 objs: $(OBJS) $(AROBJ)
 %.o:%.c
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.C
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.cc
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.CPP
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.c++
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.cp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 %.o:%.cxx
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-		cp $@ $(BUILDDIR)/
+		# cp $@ $(BUILDDIR)/
 
 all: dir $(BUILDDIR)/$(EXE)
 	@echo Build complete for $(ECHO_MESSAGE)
