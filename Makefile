@@ -59,6 +59,10 @@ LDFLAGS =
 #/!\ : use this variables to NOT include specific files : 
 # ex : EXCLUDEFILES=/root/Code/imgui/backends/imgui_impl_dx9.cpp /root/Code/imgui/backends/imgui_impl_wgpu.cpp (file with path!!)          
 EXCLUDEFILES=/
+
+#For a standalone installation  
+INSTALL_DIR = C:\\Users\\lbo\\Downloads
+
 ########################################################
 #------------------- PRE PROCESSING --------------------
 ########################################################
@@ -128,7 +132,7 @@ endif
 ########################################################
 # BUILD RULES
 ########################################################
-.PHONY: dir objs all clean help show clean_obj ar clean_ar
+.PHONY: dir objs all clean help show clean_obj ar clean_ar install
 .DEFAULT_GOAL := all
 .SUFFIXES:
 objs: $(OBJS) $(AROBJ)
@@ -162,10 +166,7 @@ all: dir $(BUILDDIR)/$(EXE)
 	
 dir :
 	mkdir -p $(BUILDDIR)
-	
-#all: $(EXE)
-#	@echo Build complete for $(ECHO_MESSAGE)
-	
+
 #(BUILDDIR)/$(EXE): $(OBJS)
 #	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS) $(LIBS)
 $(BUILDDIR)/$(EXE): $(OBJS)
@@ -178,7 +179,20 @@ $(LIBRARY) : $(AROBJ)
 	ranlib $@
 	mv $@ $(BUILDDIR)
 
+#Attention valable que sur windows 
+install : all
+	@echo "Creation du repertoire d'installation..."
+	mkdir -p "$(INSTALL_DIR)/$(BUILDFOLDER)"
 	
+	@echo "Collecte des dependances..."
+	@ldd $(BUILDFOLDER)/$(EXE) | grep "=> /" | awk '{print $$3}' | while read dep; do \
+		win_dep=$$(echo $$dep | sed -e 's|^/|C:/|' -e 's|/|\\\\|g'); \
+		echo "Copie de $$win_dep dans $(INSTALL_DIR)/$(BUILDFOLDER)"; \
+		cp "$$win_dep" "$(INSTALL_DIR)/$(BUILDFOLDER)"; \
+	done
+	@echo "Copie du binaire..."
+	cp "$(BUILDFOLDER)/$(EXE)" "$(INSTALL_DIR)/$(BUILDFOLDER)"
+
 clean:
 	$(RM) $(OBJS) $(BUILDDIR)
 
@@ -190,6 +204,7 @@ clean_ar:
 
 help:
 	@echo '  all       (=make) compile and link.'
+	@echo '  install   build the binary and copy all dependencies to the install dir'
 	@echo '  ar        (=make) compile and build a library.'
 	@echo '  clean     clean objects and the executable file.'
 	@echo '  clean_obj clean objects only.'
