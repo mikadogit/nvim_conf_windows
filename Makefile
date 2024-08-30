@@ -25,7 +25,7 @@ HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp .i
 CXX = C:\\mingw64\\bin\g++.exe
 
 #The C++/C compilation flags : 
-CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 
+CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 -std=c++20
 
 #Create a dll or so 
 DLL_FLAGS = -shared
