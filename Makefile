@@ -199,7 +199,7 @@ install : all
 	cp "$(BUILDFOLDER)/$(EXE)" "$(INSTALL_DIR)/$(BUILDFOLDER)"
 
 dll : $(OBJS)
-	  $(CXX) $(CXXFLAGS) $(DLL_FLAGS) -o $(LIBRARY) $(OBJS)
+	  $(CXX) $(LDFLAGS) $^ $(LIBS) $(DLL_FLAGS) -o $(LIBRARY)
 
 clean:
 	$(RM) $(OBJS) $(BUILDDIR)
