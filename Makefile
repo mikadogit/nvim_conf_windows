@@ -26,6 +26,10 @@ CXX = C:\\mingw64\\bin\g++.exe
 
 #The C++/C compilation flags : 
 CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 
+
+#Create a dll or so 
+DLL_FLAGS = -shared
+
 #The archive builder flages : 
 ARFLAGS = rc
 
@@ -35,6 +39,7 @@ EXE =Experimentation.exe
 #Archive component : 
 AR = src\main.o src\test.o
 #Lib NAME : 
+#or LIBRARY = lidexp.dll
 LIBRARY = libexp.a
 
 #Build destination
@@ -193,6 +198,9 @@ install : all
 	@echo "Copie du binaire..."
 	cp "$(BUILDFOLDER)/$(EXE)" "$(INSTALL_DIR)/$(BUILDFOLDER)"
 
+dll : $(OBJS)
+	  $(CXX) $(CXXFLAGS) $(DLL_FLAGS) -o $(LIBRARY) $(OBJS)
+
 clean:
 	$(RM) $(OBJS) $(BUILDDIR)
 
@@ -206,6 +214,7 @@ help:
 	@echo '  all       (=make) compile and link.'
 	@echo '  install   build the binary and copy all dependencies to the install dir'
 	@echo '  ar        (=make) compile and build a library.'
+	@echo '  dll       (=make) compile and build a dll.'
 	@echo '  clean     clean objects and the executable file.'
 	@echo '  clean_obj clean objects only.'
 	@echo '  clean_ar  clean archive.'
