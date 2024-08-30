@@ -22,7 +22,7 @@ HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp .i
 # --------------- SPECIFICATION -------------------
 ########################################################
 # The C++/C program compiler :  
-CXX = C:\\mingw64\\bin\g++.exe
+CXX = C:/mingw64/bin/g++.exe
 
 #The C++/C compilation flags : 
 CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 -std=c++20
@@ -34,39 +34,44 @@ DLL_FLAGS = -shared
 ARFLAGS = rc
 
 #Bin name generation
-EXE =Experimentation.exe
+EXE =experimentation.exe
 
 #Archive component : 
-AR = src\main.o src\test.o
+AR = src/main.o src/test.o
 #Lib NAME : 
 #or LIBRARY = lidexp.dll
 LIBRARY = libexp.a
 
 #Build destination
-BUILDFOLDER =Debug_Experimentation
+BUILDFOLDER =debug_experimentation
 #FOLDERS sources LIST (automatically processing)
 SRCDIRS =	src \
 			
 #FOLDERS headers LIST (automatically processing)
-IDIR =	src
-
+IDIR =	src \
+		C:/tsw_lib/internal_libs/bluebox-2.0/src \
+		C:/tsw_lib/external_libs/spdlog-1.0.0/include \
+		C:/tsw_lib/external_libs/serialib-2.0/src
 # IDIR =	C:\\mingw64\\include\\ \
 			# src
 			# C:\\mingw64\\x86_64-w64-mingw32\\include\\ \
 			# C:\\mingw64\\mingw32\\lib\\ \
 #ADD Libs  : 
 # ex : LIBS = -lGL -ldl `sdl2-config --libs`
-LIBS = 	
+LIBS = -lbluebox -lspdlog -lserialib
 
 #LD FLags :
-LDFLAGS = 
+LDFLAGS = -LC:/tsw_lib/internal_libs/bluebox-2.0 \
+		  -LC:/tsw_lib/external_libs/spdlog-1.0.0 \
+		  -LC:/tsw_lib/external_libs/serialib-2.0
+
 # LDFLAGS =	-LC:\\mingw64\\lib 
 #/!\ : use this variables to NOT include specific files : 
 # ex : EXCLUDEFILES=/root/Code/imgui/backends/imgui_impl_dx9.cpp /root/Code/imgui/backends/imgui_impl_wgpu.cpp (file with path!!)          
 EXCLUDEFILES=/
 
 #For a standalone installation  
-INSTALL_DIR = C:\\Users\\lbo\\Downloads
+INSTALL_DIR = C:/Users/lbo/Downloads
 
 ########################################################
 #------------------- PRE PROCESSING --------------------
@@ -168,6 +173,16 @@ objs: $(OBJS) $(AROBJ)
 
 all: dir $(BUILDDIR)/$(EXE)
 	@echo Build complete for $(ECHO_MESSAGE)
+	@for libpath in $(LDFLAGS); do \
+		dir=$$(echo $$libpath | cut -c3-); \
+		for lib in $(LIBS); do \
+			libname=$$(echo $$lib | sed 's/-l/lib/').dll; \
+			if [ -f "$$dir/$$libname" ]; then \
+				cp "$$dir/$$libname" $(BUILDDIR); \
+				echo "$$libname copié"; \
+			fi \
+		done \
+	done
 	
 dir :
 	mkdir -p $(BUILDDIR)
@@ -186,17 +201,17 @@ $(LIBRARY) : $(AROBJ)
 
 #Attention valable que sur windows 
 install : all
-	@echo "Creation du repertoire d'installation..."
+	@echo "Création du répertoire d'installation..."
 	mkdir -p "$(INSTALL_DIR)/$(BUILDFOLDER)"
 	
-	@echo "Collecte des dependances..."
+	@echo "Collecte des dépendances..."
 	@ldd $(BUILDFOLDER)/$(EXE) | grep "=> /" | awk '{print $$3}' | while read dep; do \
 		win_dep=$$(echo $$dep | sed -e 's|^/|C:/|' -e 's|/|\\\\|g'); \
 		echo "Copie de $$win_dep dans $(INSTALL_DIR)/$(BUILDFOLDER)"; \
 		cp "$$win_dep" "$(INSTALL_DIR)/$(BUILDFOLDER)"; \
 	done
 	@echo "Copie du binaire..."
-	cp "$(BUILDFOLDER)/$(EXE)" "$(INSTALL_DIR)/$(BUILDFOLDER)"
+	cp $(BUILDFOLDER)/* "$(INSTALL_DIR)/$(BUILDFOLDER)"
 
 dll : $(OBJS)
 	  $(CXX) $(LDFLAGS) $^ $(LIBS) $(DLL_FLAGS) -o $(LIBRARY)
