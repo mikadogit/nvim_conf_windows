@@ -61,13 +61,12 @@ IDIR =	src \
 LIBS = -lbluebox -lspdlog -lserialib
 
 #LD FLags :
+#WARNING : separator must be type of / in this section 
 LDFLAGS = -LC:/tsw_lib/internal_libs/bluebox-2.0 \
 		  -LC:/tsw_lib/external_libs/spdlog-1.0.0 \
 		  -LC:/tsw_lib/external_libs/serialib-2.0
 
-# LDFLAGS =	-LC:\\mingw64\\lib 
-#/!\ : use this variables to NOT include specific files : 
-# ex : EXCLUDEFILES=/root/Code/imgui/backends/imgui_impl_dx9.cpp /root/Code/imgui/backends/imgui_impl_wgpu.cpp (file with path!!)          
+#WARNING : separator must be type of / in this section 
 EXCLUDEFILES=/
 
 #For a standalone installation  
