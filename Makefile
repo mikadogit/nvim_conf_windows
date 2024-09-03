@@ -25,7 +25,7 @@ HDREXTS = .h .H .hh .hpp .HPP .h++ .hxx .hp .i
 CXX = C:/mingw64/bin/g++.exe
 
 #The C++/C compilation flags : 
-CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 -std=c++20
+CXXFLAGS = -g3 -O0 -Wall -Wconversion -Wsign-conversion -fmessage-length=0 -std=c++20 -Wa,-mbig-obj
 
 #Create a dll or so 
 DLL_FLAGS = -shared
@@ -176,10 +176,14 @@ all: dir $(BUILDDIR)/$(EXE)
 	@for libpath in $(LDFLAGS); do \
 		dir=$$(echo $$libpath | cut -c3-); \
 		for lib in $(LIBS); do \
-			libname=$$(echo $$lib | sed 's/-l/lib/').dll; \
-			if [ -f "$$dir/$$libname" ]; then \
-				cp "$$dir/$$libname" $(BUILDDIR); \
-				echo "$$libname copié"; \
+			libname1=$$(echo $$lib | sed 's/-l/lib/').dll; \
+			libname2=$$(echo $$lib | sed 's/-l//').dll; \
+			if [ -f "$$dir/$$libname1" ]; then \
+				cp "$$dir/$$libname1" $(BUILDDIR); \
+				echo "$$libname1 copié"; \
+			elif [ -f "$$dir/$$libname2" ]; then \
+				cp "$$dir/$$libname2" $(BUILDDIR); \
+				echo "$$libname2 copié"; \
 			fi \
 		done \
 	done
