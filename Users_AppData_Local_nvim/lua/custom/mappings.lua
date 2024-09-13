@@ -23,6 +23,10 @@ M.dap = {
       "<cmd> :lua require('dap').continue()<CR>",
       "Debugger : continue or start",
     },
+    ["<leader><enter>"] = {
+      "<cmd> :lua vim.lsp.buf.code_action()<CR>",
+      "Apply LSP sugestion",
+    },
     ["<leader>bm"] = {
       "<cmd> :lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
       "Debugger : break message",
