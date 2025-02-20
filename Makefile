@@ -200,7 +200,6 @@ ar : dir $(LIBRARY)
 $(LIBRARY) : $(AROBJ)
 	ar $(ARFLAGS) $@ $(AROBJ)
 	ranlib $@
-	mv $@ $(BUILDDIR)
 
 #Attention valable que sur windows 
 install : all
@@ -225,7 +224,7 @@ clean:
 clean_obj:
 	$(RM) $(OBJS)
 	
-clean_ar:
+clean_lib: clean_obj
 	$(RM) $(BUILDDIR)/$(LIBRARY)
 
 help:
@@ -233,8 +232,8 @@ help:
 	@echo '  install   build the binary and copy all dependencies to the install dir'
 	@echo '  ar        (=make) compile and build a library.'
 	@echo '  dll       (=make) compile and build a dll.'
-	@echo '  clean     clean objects and the executable file.'
 	@echo '  clean_obj clean objects only.'
+	@echo '  clean_lib  clean archive or lib.'
 	@echo '  clean_ar  clean archive.'
 	@echo '  show      show variables (for debug use only).'
 	@echo '  help      print this message.'
