@@ -80,7 +80,7 @@ M.dap = {
       "List Warnings Errors ...",
     },
     ["<leader>ml"] = {
-      "<cmd>:!make 2>&1 | tee make_logs.txt <CR>",
+      "<cmd>:!make -j16 2>&1 | tee make_logs.txt <CR>",
       "Make the .makefile saving errors and warnings into make_logs.txt",
     },
     ["<leader>mc"] = {
