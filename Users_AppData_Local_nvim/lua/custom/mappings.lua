@@ -83,8 +83,16 @@ M.dap = {
       "<cmd>:!make -j16 2>&1 | tee make_logs.txt <CR>",
       "Make the .makefile saving errors and warnings into make_logs.txt",
     },
+    ["<leader>mle"] = {
+      "<cmd>:!make exe -j16 2>&1 | tee make_logs.txt <CR>",
+      "Make the .makefile saving errors and warnings into make_logs.txt",
+    },
     ["<leader>mc"] = {
       "<cmd>:! make clean & rm make_logs.txt <CR>",
+      "Make clear",
+    },
+    ["<leader>mce"] = {
+      "<cmd>:! make clean_exe & rm make_logs.txt <CR>",
       "Make clear",
     },
     ["<leader>fx"] = {
