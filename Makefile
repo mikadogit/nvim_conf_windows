@@ -227,6 +227,12 @@ clean_obj:
 clean_lib: clean_obj
 	$(RM) $(BUILDDIR)/$(LIBRARY)
 
+clean_exe : clean_obj
+	$(RM) $(BUILDDIR)/$(EXE)
+
+exe: dir $(BUILDDIR)/$(EXE)
+	@echo Build complete for $(ECHO_MESSAGE)
+
 help:
 	@echo '  all       (=make) compile and link.'
 	@echo '  install   build the binary and copy all dependencies to the install dir'
@@ -247,4 +253,5 @@ show:
 	@echo 'LIBS        :' $(LIBS)
 	@echo 'OBJS        :' $(OBJS)
 	@echo 'EXLUDE      :' $(EXCLUDEFILES)
+
 
