@@ -1,5 +1,20 @@
 require "core"
 
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "E",
+      [vim.diagnostic.severity.WARN]  = "W",
+      [vim.diagnostic.severity.INFO]  = "I",
+      [vim.diagnostic.severity.HINT]  = "H",
+    },
+  },
+  underline = true,
+  severity_sort = true,
+  virtual_text = false, -- optionnel
+  update_in_insert = false,
+})
+
 local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
 vim.api.nvim_set_keymap('n', '<C-p>', '<C-i>', { noremap = true, silent = true })
