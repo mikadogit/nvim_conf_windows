@@ -1,12 +1,19 @@
-CF : https://nvchad.com/docs/quickstart/install/
+CF : https://nvchad.com/docs/quickstart/install/ (ne pas faire l'install de tree-sitter)
 
-git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim && nvim (pas obligatoire, car si evolution via nvchad, il faut faire un diff lors de la copie des dossiers) (VIA POWERSHELL)
+Powershell :
+git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim; nvim
 
+Ensuite supprimer le contenue de AppData/Local/nvim et remplacer par les miens 
+
+Il faut aussi 
 installer ripgrep et xclip (cholately)
 installer python3-dev et env
+
+
 TsInstall c et cpp et python
 
 MasonInstallAll
 Lazy
 
 dap_conf.txt utile uniquement si GDB Server 
+
